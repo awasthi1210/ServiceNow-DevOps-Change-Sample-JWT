@@ -11,10 +11,49 @@ on: workflow_dispatch
 # on:
 #   schedule:
 #     - cron: '*/2 * * * *'
-
-
 jobs:
   build:
+   runs-on: ubuntu-latest
+  
+   steps:
+   # This action checks out the code from the repository
+   - name: Checkout Code
+     uses: actions/checkout@v2
+
+
+   # This action sets up the JFrog CLI with the Artifactory URL and access token     
+   - uses: jfrog/setup-jfrog-cli@v3
+     env:
+       JF_URL: "https://venkata14.jfrog.io"
+       JF_ACCESS_TOKEN: "eyJ2ZXIiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYiLCJraWQiOiJrUzlFVV8zMnZpTWRpb0RsSDYxbG02OXpfU3I2S2NBNHNpaWJxY1h0N1ZnIn0.eyJzdWIiOiJqZmFjQDAxaHJ0anE5Njhxa2g0MDJqZG0zdDIwem10L3VzZXJzL2FkbWluIiwic2NwIjoiYXBwbGllZC1wZXJtaXNzaW9ucy9hZG1pbiIsImF1ZCI6IipAKiIsImlzcyI6ImpmZmVAMDFocnRqcTk2OHFraDQwMmpkbTN0MjB6bXQiLCJpYXQiOjE3MTAzNTI1MjEsImp0aSI6ImIzYTFhNWY4LTAyMjktNGNmZi1hNjBhLTVkYTNmM2ViZjQ1MyJ9.TB9LyeaIg0u-21uqAeZHcNxkV34jQivc5zNWf_uPe1XKQQhtkzlikRzZ_RSlWzMW76_Noh-a2pKF5_-3QafQyhbPO4KbYzJSQiIYZobCtucPIZ9Z2MEpUOcQnelRRXUDL1t7ZpeFMENJ0Xn5x2J0Ng7E9VjUxeixiuc2JbzxknC03z9Eh0n0p4XQ6667fr3Vgf9X5afyyza_HIQ-uTPbItmeIt802QY_JaXEbbUc_t2g01lqik9lLSx7mj3N53DVYh_VZxIkClNe3RpTn_TLcSIxbWjPVJA3DImnQDynzbZ2bIM59gppEczNB9hnPvjHo2M2d0K7M286_1l7IDUVvg"
+
+
+   # This command adds a new server configuration to the JFrog CLI   
+   - run: |
+       export SERVER_ID="venkata14"
+       jf c add $SERVER_ID --url="https://venkata14.jfrog.io" --access-token="eyJ2ZXIiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYiLCJraWQiOiJrUzlFVV8zMnZpTWRpb0RsSDYxbG02OXpfU3I2S2NBNHNpaWJxY1h0N1ZnIn0.eyJzdWIiOiJqZmFjQDAxaHJ0anE5Njhxa2g0MDJqZG0zdDIwem10L3VzZXJzL2FkbWluIiwic2NwIjoiYXBwbGllZC1wZXJtaXNzaW9ucy9hZG1pbiIsImF1ZCI6IipAKiIsImlzcyI6ImpmZmVAMDFocnRqcTk2OHFraDQwMmpkbTN0MjB6bXQiLCJpYXQiOjE3MTAzNTI1MjEsImp0aSI6ImIzYTFhNWY4LTAyMjktNGNmZi1hNjBhLTVkYTNmM2ViZjQ1MyJ9.TB9LyeaIg0u-21uqAeZHcNxkV34jQivc5zNWf_uPe1XKQQhtkzlikRzZ_RSlWzMW76_Noh-a2pKF5_-3QafQyhbPO4KbYzJSQiIYZobCtucPIZ9Z2MEpUOcQnelRRXUDL1t7ZpeFMENJ0Xn5x2J0Ng7E9VjUxeixiuc2JbzxknC03z9Eh0n0p4XQ6667fr3Vgf9X5afyyza_HIQ-uTPbItmeIt802QY_JaXEbbUc_t2g01lqik9lLSx7mj3N53DVYh_VZxIkClNe3RpTn_TLcSIxbWjPVJA3DImnQDynzbZ2bIM59gppEczNB9hnPvjHo2M2d0K7M286_1l7IDUVvg" --interactive=false
+
+
+   - name: Run JFrog CLI Ping
+     run: |
+          export JFROG_CLI_HOME="/home/runner/work/jenkins-test/jenkins-test"
+          jf rt u "README.md" "tf-trial/workspaces/jfrog-ws1/"
+          # Collect environment variables for the build
+          jf rt bce
+          # Publish build info
+          jf rt bp
+   - name: Download Artifact
+     run: |
+          jf rt dl tf-trial/workspaces/jfrog-ws1/README.md ./ 
+          jf rt bp
+
+
+   - name: Display structure of downloaded files of Artifact 
+     run: ls -R
+     working-directory: ${{ github.workspace }}
+
+
+  build1:
     name: 'Build'
     runs-on: ubuntu-latest
 
