@@ -55,6 +55,7 @@ jobs:
 
   build1:
     name: 'Build'
+    needs: build
     runs-on: ubuntu-latest
 
     steps:
@@ -70,7 +71,7 @@ jobs:
 
   test:
     name: 'Test'
-    needs: build
+    needs: build1
     runs-on: ubuntu-latest
     steps:
     - name: Checkout
