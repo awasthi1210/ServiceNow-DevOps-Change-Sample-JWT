@@ -251,13 +251,14 @@ jobs:
         run: echo Completed Deployment. 
 
   getchange:
-    # jobs that must complete successfully before this job will run
-    needs: deploy
+    # jobs that  must complete successfully before this job will run
+    needs: change
     # type of machine to run the job on
     runs-on: ubuntu-latest
+    if: always()
     name: 'ServiceNow DevOps Get Change'
     outputs:
-      changeRequestNumber: ${{ steps.get_change.outputs.change-request-number }}
+      change-request-number: ${{ steps.get_change.outputs.change-request-number }}
     steps:
       - name: ServiceNow DevOps Get Change
         # You may pin to the exact commit or the version.
@@ -276,12 +277,10 @@ jobs:
           # Github Context
           context-github: ${{ toJSON(github) }}
           # The inputs to identify change at Servicenow and GET it.
-          # change-details: '{"build_number":"","pipeline_name":"${{github.repository}}/${{github.workflow}}","stage_name":"Change Request"}'
-          change-details: '{"build_number":"","pipeline_name":"","stage_name":"Change Request","attempt_number":${githubContext.run_attempt}}'
-
+          change-details: '{"build_number":"","pipeline_name":"","stage_name":"Change Request"}'
 
       - name: Output of ServiceNow DevOps Get Change
-        run: echo "change-request-number = ${{ steps.get_change.outputs.change-request-number }}" >> $GITHUB_OUTPUT
+        run: echo 'Output of ServiceNow DevOps Get Change is -> change-request-number = ${{ steps.get_change.outputs.change-request-number }}' >> $GITHUB_OUTPUT
 
   updatechange:
     # jobs that must complete successfully before this job will run
