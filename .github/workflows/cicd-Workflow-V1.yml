@@ -279,7 +279,7 @@ jobs:
           change-details: '{"build_number":"${{github.run_id}}","pipeline_name":"${{github.repository}}/${{github.workflow}}","stage_name":"Change Request"}'
 
       - name: Output of ServiceNow DevOps Get Change
-        run: echo "change-request-number = ${{ steps.get.outputs.change-request-number }}" >> $GITHUB_OUTPUT
+        run: echo "change-request-number = ${{ steps.get_change.outputs.change-request-number }}" >> $GITHUB_OUTPUT
 
   updatechange:
     # jobs that must complete successfully before this job will run
