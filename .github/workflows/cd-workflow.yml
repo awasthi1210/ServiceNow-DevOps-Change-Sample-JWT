@@ -3,9 +3,9 @@
 name: CD GitHub workflow
 
 on: workflow_dispatch
-#   workflow_run:
-    # workflows: [ "CI GitHub workflow" ]
-    # types: [completed]
+  workflow_run:
+    workflows: [ "CI GitHub workflow" ]
+    types: [completed]
 
 jobs:
   registerPackage:
