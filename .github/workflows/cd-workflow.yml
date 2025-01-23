@@ -1,7 +1,5 @@
 # This workflow uses ServiceNow custom actions that are certified by ServiceNow.
 name: CD GitHub workflow
-
-# on: workflow_dispatch
 on:
   workflow_run:
     workflows: [ "CI GitHub workflow" ]
