@@ -4,8 +4,8 @@
 name: CD GitHub workflow 
 on:
  workflow_dispatch:
- workflows: [ "CI GitHub workflow" ]
- types: [completed]
+ # workflows: [ "CI GitHub workflow" ]
+ # types: [completed]
   # pull_request:
   #   types: [opened, reopened, merged, closed, synchronize]
   #   branches:
