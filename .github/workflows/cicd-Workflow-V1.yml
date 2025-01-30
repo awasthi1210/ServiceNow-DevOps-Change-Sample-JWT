@@ -47,7 +47,7 @@ jobs:
   #  - name: Download Artifact
   #    run: |
   #         jf rt dl tf-trial/workspaces/jfrog-ws1/README.md ./ 
-  #         jf rt bp
+  #         jf rt bp 
 
 
   #  - name: Display structure of downloaded files of Artifact 
