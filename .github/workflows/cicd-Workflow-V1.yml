@@ -96,7 +96,7 @@ jobs:
           # Job Name
           job-name: 'Test' # Should be same name as declared in 'name' clause of the current Stage
           # Github Context
-          context-github: ${{ toJSON(github) }}
+          context-github: ${{ toJSON(github) }} 
           # JUnit xml report file name with path
           xml-report-filename: target/ # if only JUnit tests, use target/surefire-reports/testng-results.xml
                                                                           # if both JUnit & TestNG tests, use target/surefire-reports/testng-junit-results/testng-results.xml
