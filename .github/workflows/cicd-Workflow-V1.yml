@@ -13,51 +13,52 @@ on:
 #   schedule:
 #     - cron: '*/2 * * * *'
 jobs:
-  # build:
-  #  runs-on: ubuntu-latest
+  JFrog:
+   runs-on: ubuntu-latest
 
-  #  steps:
-  #  # This action checks out the code from the repository
-  #  - name: Checkout Code
-  #    uses: actions/checkout@v2
-
-
-  #  # This action sets up the JFrog CLI with the Artifactory URL and access token     
-  #  - uses: jfrog/setup-jfrog-cli@v3
-  #    env:
-  #      JF_URL: "https://venkata7.jfrog.io"
-  #      JF_ACCESS_TOKEN: "eyJ2ZXIiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYiLCJraWQiOiJmUHhRTTk0ZGQ1eW1rellOcV95R3d5ak82T2RvZFhzTDF5YWJDVm5GdWtrIn0.eyJzdWIiOiJqZmFjQDAxaHN4MTJ3Z2ZtMTVjMDRuYXpqNGcwMnJtL3VzZXJzL2FkbWluIiwic2NwIjoiYXBwbGllZC1wZXJtaXNzaW9ucy9hZG1pbiIsImF1ZCI6IipAKiIsImlzcyI6ImpmZmVAMDFoc3gxMndnZm0xNWMwNG5hemo0ZzAycm0iLCJpYXQiOjE3MTE2OTQ4MDIsImp0aSI6IjBjNmFjZmNjLWFjMzItNDY0OS04NmJiLWIzMWZkYjQxNjk3ZCJ9.GCn1a1rw8W_mZPyv_B18KFByVAoqJ8jUMMBC-vsrn-31GOOjLeWKSSWherKHfHCgihi2EvVQ-mDe41KBlVcE7C0S_PDRl4oIGp9eT1qnjwbkkEy1xJ1ijnGZ9iSItQ7rBwGySa1HyT-3JnbXwWQ4K4qsnUDFsS7NYFnyOjv15skr2tV558FCGPxS_223z_CMj7Qz7OxgnqezobZmFv6VNK3e8u9CCKCR5M9KSdfpAXTBjZCkzhC8xkLurkgZwl-y_Xo3yzxdWit6LyVh5bBc1c-kWsClEoFzB3-tGPJjgl8LFspwtq7aNJeDDFbhvFY8WXtaZAM40tnG6R-F_iXbJw"
+   steps:
+   # This action checks out the code from the repository
+   - name: Checkout Code
+     uses: actions/checkout@v2
 
 
-  #  # This command adds a new server configuration to the JFrog CLI   
-  #  - run: |
-  #      export SERVER_ID="venkata7"
-  #      jf c add $SERVER_ID --url="https://venkata14.jfrog.io" --access-token="eyJ2ZXIiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYiLCJraWQiOiJmUHhRTTk0ZGQ1eW1rellOcV95R3d5ak82T2RvZFhzTDF5YWJDVm5GdWtrIn0.eyJzdWIiOiJqZmFjQDAxaHN4MTJ3Z2ZtMTVjMDRuYXpqNGcwMnJtL3VzZXJzL2FkbWluIiwic2NwIjoiYXBwbGllZC1wZXJtaXNzaW9ucy9hZG1pbiIsImF1ZCI6IipAKiIsImlzcyI6ImpmZmVAMDFoc3gxMndnZm0xNWMwNG5hemo0ZzAycm0iLCJpYXQiOjE3MTE2OTQ4MDIsImp0aSI6IjBjNmFjZmNjLWFjMzItNDY0OS04NmJiLWIzMWZkYjQxNjk3ZCJ9.GCn1a1rw8W_mZPyv_B18KFByVAoqJ8jUMMBC-vsrn-31GOOjLeWKSSWherKHfHCgihi2EvVQ-mDe41KBlVcE7C0S_PDRl4oIGp9eT1qnjwbkkEy1xJ1ijnGZ9iSItQ7rBwGySa1HyT-3JnbXwWQ4K4qsnUDFsS7NYFnyOjv15skr2tV558FCGPxS_223z_CMj7Qz7OxgnqezobZmFv6VNK3e8u9CCKCR5M9KSdfpAXTBjZCkzhC8xkLurkgZwl-y_Xo3yzxdWit6LyVh5bBc1c-kWsClEoFzB3-tGPJjgl8LFspwtq7aNJeDDFbhvFY8WXtaZAM40tnG6R-F_iXbJw" --interactive=false
-
-  # # Upload the JFrog Artifact, in the below we are upload README.md artifact.
-  #  - name: Run JFrog CLI Ping
-  #    run: |
-  #         export JFROG_CLI_HOME="/home/runner/work/jenkins-test/jenkins-test"
-  #         jf rt u "README.md" "tf-trial/workspaces/jfrog-ws1/"
-  #         # Collect environment variables for the build
-  #         jf rt bce
-  #         # Publish build info
-  #         jf rt bp
-
-  #  # Download the JFrog Artifact, in the below we are Downloading README.md artifact.
-  #  - name: Download Artifact
-  #    run: |
-  #         jf rt dl tf-trial/workspaces/jfrog-ws1/README.md ./ 
-  #         jf rt bp
+   # This action sets up the JFrog CLI with the Artifactory URL and access token     
+   - uses: jfrog/setup-jfrog-cli@v3
+     env:
+       JF_URL: "ankur.trips.2022@gmail.com"
+       JF_ACCESS_TOKEN: "cmVmdGtuOjAxOjE3ODEyNjE2Mjg6UDliT1BwbDJpaDdlWHB5NHZZYmFtcjBaeXoy"
 
 
-  #  - name: Display structure of downloaded files of Artifact 
-  #    run: ls -R
-  #    working-directory: ${{ github.workspace }}
+   # This command adds a new server configuration to the JFrog CLI   
+   - run: |
+       export SERVER_ID="venkata7"
+       jf c add $SERVER_ID --url="ankur.trips.2022@gmail.com" --access-token="cmVmdGtuOjAxOjE3ODEyNjE2Mjg6UDliT1BwbDJpaDdlWHB5NHZZYmFtcjBaeXoy" --interactive=false
+
+  # Upload the JFrog Artifact, in the below we are upload README.md artifact.
+   - name: Run JFrog CLI Ping
+     run: |
+          export JFROG_CLI_HOME="/home/runner/work/jenkins-test/jenkins-test"
+          jf rt u "README.md" "tf-trial/workspaces/jfrog-ws1/"
+          # Collect environment variables for the build
+          jf rt bce
+          # Publish build info
+          jf rt bp
+
+   # Download the JFrog Artifact, in the below we are Downloading README.md artifact.
+   - name: Download Artifact
+     run: |
+          jf rt dl tf-trial/workspaces/jfrog-ws1/README.md ./ 
+          jf rt bp
+
+
+   - name: Display structure of downloaded files of Artifact 
+     run: ls -R
+     working-directory: ${{ github.workspace }}
 
 
   build:
     name: 'Build'
+    needs: JFrog
     runs-on: ubuntu-latest
 
     steps:
@@ -71,169 +72,169 @@ jobs:
     - name: Build with Maven
       run: mvn clean compile
 
-  # test:
-  #   name: 'Test'
-  #   needs: build
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - name: Checkout
-  #     uses: actions/checkout@v4.0.0
+  test:
+    name: 'Test'
+    needs: build
+    runs-on: ubuntu-latest
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4.0.0
 
-  #   - name: Run Tests with Maven
-  #     run: mvn -B test --file pom.xml
+    - name: Run Tests with Maven
+      run: mvn -B test --file pom.xml
 
-  #   - name: ServiceNow DevOps Unit Test Results
-  #   # You may pin to the exact commit or the version.
-  #     uses: ServiceNow/servicenow-devops-test-report@scratch/STRY59283893
-  #     with:
-  #         # Devops Integration Token
-  #         # devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
-  #         devops-integration-user-name: '${{ secrets.SN_DEVOPS_USER }}'
-  #         devops-integration-user-password: '${{ secrets.SN_DEVOPS_PASSWORD }}'
-  #         # ServiceNow Instance Name
-  #         instance-url: ${{ secrets.SN_INSTANCE_URL }}
-  #         # Orchestration Tool Id
-  #         tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
-  #         # Job Name
-  #         job-name: 'Test' # Should be same name as declared in 'name' clause of the current Stage
-  #         test-summary-name: 'Mona Test Summary'
-  #         # Github Context
-  #         context-github: ${{ toJSON(github) }}
-  #         # JUnit xml report file name with path
-  #         xml-report-filename: target/ # if only JUnit tests, use target/surefire-reports/testng-results.xml
-  #                                                                         # if both JUnit & TestNG tests, use target/surefire-reports/testng-junit-results/testng-results.xml
+    - name: ServiceNow DevOps Unit Test Results
+    # You may pin to the exact commit or the version.
+      uses: ServiceNow/servicenow-devops-test-report@scratch/STRY59283893
+      with:
+          # Devops Integration Token
+          # devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
+          devops-integration-user-name: '${{ secrets.SN_DEVOPS_USER }}'
+          devops-integration-user-password: '${{ secrets.SN_DEVOPS_PASSWORD }}'
+          # ServiceNow Instance Name
+          instance-url: ${{ secrets.SN_INSTANCE_URL }}
+          # Orchestration Tool Id
+          tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+          # Job Name
+          job-name: 'Test' # Should be same name as declared in 'name' clause of the current Stage
+          test-summary-name: 'Mona Test Summary'
+          # Github Context
+          context-github: ${{ toJSON(github) }}
+          # JUnit xml report file name with path
+          xml-report-filename: target/ # if only JUnit tests, use target/surefire-reports/testng-results.xml
+                                                                          # if both JUnit & TestNG tests, use target/surefire-reports/testng-junit-results/testng-results.xml
 
-  # registerArtifact:
-  #   name: 'Register Artifact'
-  #   needs: test
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - name: ServiceNow DevOps Register Artifact
-  #   # You may pin to the exact commit or the version.          
-  #     uses: ServiceNow/servicenow-devops-register-artifact@v5.1.0
-  #     with:
-  #         devops-integration-user-name: '${{ secrets.SN_DEVOPS_USER }}'
-  #         devops-integration-user-password: '${{ secrets.SN_DEVOPS_PASSWORD }}'
-  #         # Devops Integration Token
-  #         # devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
-  #         # ServiceNow Instance URL
-  #         instance-url: ${{ secrets.SN_INSTANCE_URL }}
-  #         # Orchestration Tool Id
-  #         tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
-  #         # Display Name of the Job
-  #         job-name: 'Register Artifact'
-  #         # Github Context
-  #         context-github: ${{ toJSON(github) }}
-  #         # List of Artifacts to be registered
-  #         artifacts: '[
-  #            {
-  #                 "name": "app-devops-cicd.jar",
-  #                 "version": "1.${{ github.run_number }}",
-  #                 "semanticVersion": "1.${{ github.run_number }}.0",
-  #                 "repositoryName": "${{ github.repository }}"
-  #             }
-  #         ]'
+  registerArtifact:
+    name: 'Register Artifact'
+    needs: test
+    runs-on: ubuntu-latest
+    steps:
+    - name: ServiceNow DevOps Register Artifact
+    # You may pin to the exact commit or the version.          
+      uses: ServiceNow/servicenow-devops-register-artifact@v5.1.0
+      with:
+          devops-integration-user-name: '${{ secrets.SN_DEVOPS_USER }}'
+          devops-integration-user-password: '${{ secrets.SN_DEVOPS_PASSWORD }}'
+          # Devops Integration Token
+          # devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
+          # ServiceNow Instance URL
+          instance-url: ${{ secrets.SN_INSTANCE_URL }}
+          # Orchestration Tool Id
+          tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+          # Display Name of the Job
+          job-name: 'Register Artifact'
+          # Github Context
+          context-github: ${{ toJSON(github) }}
+          # List of Artifacts to be registered
+          artifacts: '[
+             {
+                  "name": "app-devops-cicd.jar",
+                  "version": "1.${{ github.run_number }}",
+                  "semanticVersion": "1.${{ github.run_number }}.0",
+                  "repositoryName": "${{ github.repository }}"
+              }
+          ]'
 
-  # sonarScan:
-  #  name: 'Sonar Scan'
-  #  needs: registerArtifact
-  #  runs-on: ubuntu-latest
-  #  steps:
-  #  - name: Checkout
-  #    uses: actions/checkout@v4.0.0
+  sonarScan:
+   name: 'Sonar Scan'
+   needs: registerArtifact
+   runs-on: ubuntu-latest
+   steps:
+   - name: Checkout
+     uses: actions/checkout@v4.0.0
 
-  #  - name: ServiceNow DevOps Sonar Scan Results
-  #  # You may pin to the exact commit or the version.     
-  #    uses: ServiceNow/servicenow-devops-sonar@v5.1.0
-  #    with:
-  #        # ServiceNow Instance URL
-  #        instance-url: ${{ secrets.SN_INSTANCE_URL }}
-  #        # Devops Integration Token
-  #        devops-integration-user-name: '${{ secrets.SN_DEVOPS_USER }}'
-  #        devops-integration-user-password: '${{ secrets.SN_DEVOPS_PASSWORD }}'
-  #        # devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
-  #        # Orchestration Tool Id
-  #        tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
-  #        # Github Context
-  #        context-github: ${{ toJSON(github) }}
-  #        # Display Name of the Job
-  #        job-name: 'Sonar Scan'
-  #        # Sonar Host URL
-  #        sonar-host-url: ${{ secrets.SONAR_URL }}
-  #        # Sonar Project Key
-  #        sonar-project-key: ${{ secrets.SONAR_PROJECT_KEY }}
+   - name: ServiceNow DevOps Sonar Scan Results
+   # You may pin to the exact commit or the version.     
+     uses: ServiceNow/servicenow-devops-sonar@v5.1.0
+     with:
+         # ServiceNow Instance URL
+         instance-url: ${{ secrets.SN_INSTANCE_URL }}
+         # Devops Integration Token
+         devops-integration-user-name: '${{ secrets.SN_DEVOPS_USER }}'
+         devops-integration-user-password: '${{ secrets.SN_DEVOPS_PASSWORD }}'
+         # devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
+         # Orchestration Tool Id
+         tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+         # Github Context
+         context-github: ${{ toJSON(github) }}
+         # Display Name of the Job
+         job-name: 'Sonar Scan'
+         # Sonar Host URL
+         sonar-host-url: ${{ secrets.SONAR_URL }}
+         # Sonar Project Key
+         sonar-project-key: ${{ secrets.SONAR_PROJECT_KEY }}
 
-  # ServiceNowSecurityScanResults:
-  #   # type of machine to run the job on
-  #   runs-on: ubuntu-latest
-  #   name: ServiceNow Security Scan Results
-  #   needs: sonarScan
-  #   steps:
-  #     - name: ServiceNow DevOps Security Results
-  #       uses: ServiceNow/servicenow-devops-security-result@v5.1.0
-  #       with:
-  #           # DevOps Integration Token of GitHub tool created in ServiceNow instance for token based authentication.
-  #           # devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
-  #           devops-integration-user-name: '${{ secrets.SN_DEVOPS_USER }}'
-  #           devops-integration-user-password: '${{ secrets.SN_DEVOPS_PASSWORD }}'
-  #           # ServiceNow Instance URL
-  #           instance-url: ${{ secrets.SN_INSTANCE_URL }}
-  #           # Orchestration Tool Id
-  #           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
-  #           # GitHub Context
-  #           context-github: ${{ toJSON(github) }}
-  #           # Display Name of the Job
-  #           job-name: 'ServiceNow Security Scan Results'
-  #           security-result-attributes: '{"scanner": "Veracode", "applicationName": "10kflaws-72"}'
-  #           scanner: Scanning tool and is required e.g. Veracode.
-  #           applicationName: Name of your Veracode application and is required. This attribute is applicable only for Veracode.
-  #           buildVersion: Veracode Scan name / build version and is optional. This attribute is applicable only for Veracode.
-  #           securityToolId: Security tool onboarded in ServiceNow (sys_id of the onboarded security tool) and is optional.
+  ServiceNowSecurityScanResults:
+    # type of machine to run the job on
+    runs-on: ubuntu-latest
+    name: ServiceNow Security Scan Results
+    needs: sonarScan
+    steps:
+      - name: ServiceNow DevOps Security Results
+        uses: ServiceNow/servicenow-devops-security-result@v5.1.0
+        with:
+            # DevOps Integration Token of GitHub tool created in ServiceNow instance for token based authentication.
+            # devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
+            devops-integration-user-name: '${{ secrets.SN_DEVOPS_USER }}'
+            devops-integration-user-password: '${{ secrets.SN_DEVOPS_PASSWORD }}'
+            # ServiceNow Instance URL
+            instance-url: ${{ secrets.SN_INSTANCE_URL }}
+            # Orchestration Tool Id
+            tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+            # GitHub Context
+            context-github: ${{ toJSON(github) }}
+            # Display Name of the Job
+            job-name: 'ServiceNow Security Scan Results'
+            security-result-attributes: '{"scanner": "Veracode", "applicationName": "10kflaws-72"}'
+            scanner: Scanning tool and is required e.g. Veracode.
+            applicationName: Name of your Veracode application and is required. This attribute is applicable only for Veracode.
+            buildVersion: Veracode Scan name / build version and is optional. This attribute is applicable only for Veracode.
+            securityToolId: Security tool onboarded in ServiceNow (sys_id of the onboarded security tool) and is optional.
 
-  # registerPackage:
-  #   name: 'Register Package'
-  #   needs: [registerArtifact]
-  #   runs-on: ubuntu-latest
-  #   steps:
-  #   - name: ServiceNow DevOps Register Package
-  #   # You may pin to the exact commit or the version.           
-  #     uses: ServiceNow/servicenow-devops-register-package@v5.1.0
-  #     with:
-  #         # Devops Integration Token
-  #         devops-integration-user-name: '${{ secrets.SN_DEVOPS_USER }}'
-  #         devops-integration-user-password: '${{ secrets.SN_DEVOPS_PASSWORD }}'
-  #         # devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
-  #         # ServiceNow Instance URL
-  #         instance-url: ${{ secrets.SN_INSTANCE_URL }}
-  #         # Orchestration Tool Id of the tool created in ServiceNow
-  #         tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
-  #         # Github Context
-  #         context-github: ${{ toJSON(github) }}
-  #         # List of Artifacts in JSON format
-  #         artifacts: '[
-  #             {
-  #                 "name": "app-devops-cicd.jar",
-  #                 "version": "1.${{ github.run_number }}",
-  #                 "semanticVersion": "1.${{ github.run_number }}.0",
-  #                 "repositoryName": "${{ github.repository }}"
-  #             }
-  #         ]'
-  #         # Name of the Package that contains list of artifacts
-  #         package-name: 'app-devops-change-velocity-cicd.war'
-  #         # Display Name of Job
-  #         job-name: 'Register Package'
+  registerPackage:
+    name: 'Register Package'
+    needs: [ServiceNowSecurityScanResults]
+    runs-on: ubuntu-latest
+    steps:
+    - name: ServiceNow DevOps Register Package
+    # You may pin to the exact commit or the version.           
+      uses: ServiceNow/servicenow-devops-register-package@v5.1.0
+      with:
+          # Devops Integration Token
+          devops-integration-user-name: '${{ secrets.SN_DEVOPS_USER }}'
+          devops-integration-user-password: '${{ secrets.SN_DEVOPS_PASSWORD }}'
+          # devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
+          # ServiceNow Instance URL
+          instance-url: ${{ secrets.SN_INSTANCE_URL }}
+          # Orchestration Tool Id of the tool created in ServiceNow
+          tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+          # Github Context
+          context-github: ${{ toJSON(github) }}
+          # List of Artifacts in JSON format
+          artifacts: '[
+              {
+                  "name": "app-devops-cicd.jar",
+                  "version": "1.${{ github.run_number }}",
+                  "semanticVersion": "1.${{ github.run_number }}.0",
+                  "repositoryName": "${{ github.repository }}"
+              }
+          ]'
+          # Name of the Package that contains list of artifacts
+          package-name: 'app-devops-change-velocity-cicd.war'
+          # Display Name of Job
+          job-name: 'Register Package'
 
   change:
     name: Change Request
-    needs: build
+    needs: registerPackage
     runs-on: ubuntu-latest
     steps:     
       - name: ServiceNow DevOps Change Attributes
         uses: ServiceNow/servicenow-devops-change@v6.0.0
         with:
-          # devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
-          # devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
-          devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
+          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
+          devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+          # devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
           instance-url: ${{ secrets.SN_INSTANCE_URL }}
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           context-github: ${{ toJSON(github) }}
@@ -271,9 +272,9 @@ jobs:
           # ServiceNow Instance URL
           instance-url: ${{ secrets.SN_INSTANCE_URL }}
           # Devops Integration Token
-          devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
-          # devops-integration-user-name: '${{ secrets.SN_DEVOPS_USER }}'
-          # devops-integration-user-password: '${{ secrets.SN_DEVOPS_PASSWORD }}'
+          # devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
+          devops-integration-user-name: '${{ secrets.SN_DEVOPS_USER }}'
+          devops-integration-user-password: '${{ secrets.SN_DEVOPS_PASSWORD }}'
           # Orchestration Tool Id
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           # Github Context
@@ -300,9 +301,9 @@ jobs:
           # ServiceNow Instance URL
           instance-url: ${{ secrets.SN_INSTANCE_URL }}
           # ServiceNow Devops security token
-          devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
-          # devops-integration-user-name: '${{ secrets.SN_DEVOPS_USER }}'
-          # devops-integration-user-password: '${{ secrets.SN_DEVOPS_PASSWORD }}'
+          # devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
+          devops-integration-user-name: '${{ secrets.SN_DEVOPS_USER }}'
+          devops-integration-user-password: '${{ secrets.SN_DEVOPS_PASSWORD }}'
           # Orchestration Tool Id of the tool created in ServiceNow
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           # Github Context
