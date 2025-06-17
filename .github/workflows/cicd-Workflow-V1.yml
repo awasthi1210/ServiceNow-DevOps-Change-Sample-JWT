@@ -13,47 +13,47 @@ on:
 #   schedule:
 #     - cron: '*/2 * * * *'
 jobs:
-  # JFrog:
-  #  runs-on: ubuntu-latest
+  JFrog:
+   runs-on: ubuntu-latest
 
-  #  steps:
-  #  # This action checks out the code from the repository
-  #  - name: Checkout Code
-  #    uses: actions/checkout@v2
-
-
-  #  # This action sets up the JFrog CLI with the Artifactory URL and access token     
-  #  - uses: jfrog/setup-jfrog-cli@v3
-  #    env:
-  #      JF_URL: "ankur.trips.2022@gmail.com"
-  #      JF_ACCESS_TOKEN: "cmVmdGtuOjAxOjE3ODEyNjE2Mjg6UDliT1BwbDJpaDdlWHB5NHZZYmFtcjBaeXoy"
+   steps:
+   # This action checks out the code from the repository
+   - name: Checkout Code
+     uses: actions/checkout@v2
 
 
-  #  # This command adds a new server configuration to the JFrog CLI   
-  #  - run: |
-  #      export SERVER_ID="venkata7"
-  #      jf c add $SERVER_ID --url="ankur.trips.2022@gmail.com" --access-token="cmVmdGtuOjAxOjE3ODEyNjE2Mjg6UDliT1BwbDJpaDdlWHB5NHZZYmFtcjBaeXoy" --interactive=false
-
-  # # Upload the JFrog Artifact, in the below we are upload README.md artifact.
-  #  - name: Run JFrog CLI Ping
-  #    run: |
-  #         export JFROG_CLI_HOME="/home/runner/work/jenkins-test/jenkins-test"
-  #         jf rt u "README.md" "tf-trial/workspaces/jfrog-ws1/"
-  #         # Collect environment variables for the build
-  #         jf rt bce
-  #         # Publish build info
-  #         jf rt bp
-
-  #  # Download the JFrog Artifact, in the below we are Downloading README.md artifact.
-  #  - name: Download Artifact
-  #    run: |
-  #         jf rt dl tf-trial/workspaces/jfrog-ws1/README.md ./ 
-  #         jf rt bp
+   # This action sets up the JFrog CLI with the Artifactory URL and access token     
+   - uses: jfrog/setup-jfrog-cli@v3
+     env:
+       JF_URL: "ankur.trips.2022@gmail.com"
+       JF_ACCESS_TOKEN: "cmVmdGtuOjAxOjE3ODEyNjE2Mjg6UDliT1BwbDJpaDdlWHB5NHZZYmFtcjBaeXoy"
 
 
-  #  - name: Display structure of downloaded files of Artifact 
-  #    run: ls -R
-  #    working-directory: ${{ github.workspace }}
+   # This command adds a new server configuration to the JFrog CLI   
+   - run: |
+       export SERVER_ID="venkata7"
+       jf c add $SERVER_ID --url="ankur.trips.2022@gmail.com" --access-token="cmVmdGtuOjAxOjE3ODEyNjE2Mjg6UDliT1BwbDJpaDdlWHB5NHZZYmFtcjBaeXoy" --interactive=false
+
+  # Upload the JFrog Artifact, in the below we are upload README.md artifact.
+   - name: Run JFrog CLI Ping
+     run: |
+          export JFROG_CLI_HOME="/home/runner/work/jenkins-test/jenkins-test"
+          jf rt u "README.md" "tf-trial/workspaces/jfrog-ws1/"
+          # Collect environment variables for the build
+          jf rt bce
+          # Publish build info
+          jf rt bp
+
+   # Download the JFrog Artifact, in the below we are Downloading README.md artifact.
+   - name: Download Artifact
+     run: |
+          jf rt dl tf-trial/workspaces/jfrog-ws1/README.md ./ 
+          jf rt bp
+
+
+   - name: Display structure of downloaded files of Artifact 
+     run: ls -R
+     working-directory: ${{ github.workspace }}
 
 
   build:
