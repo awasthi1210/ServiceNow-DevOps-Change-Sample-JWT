@@ -240,7 +240,7 @@ jobs:
     name: Deploy
     needs: change
     runs-on: ubuntu-latest
-    # environment: prod
+    environment: prod
     steps:
       - name: Run deployment scripts
         run: echo Completed Deployment. 
