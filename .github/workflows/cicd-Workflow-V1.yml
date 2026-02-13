@@ -13,7 +13,6 @@ on:
 #   schedule:
 #     - cron: '*/2 * * * *'
 jobs:
-
   build:
     name: 'Build'
     # needs: JFrog
@@ -90,10 +89,9 @@ jobs:
                   "version": "1.${{ github.run_number }}",
                   "semanticVersion": "1.${{ github.run_number }}.0",
                   "repositoryName": "${{ github.repository }}"
-              }
-          ]'
+              }]'
 
-   sonarScan:
+  sonarScan:
    name: 'Sonar Scan'
    needs: registerArtifact
    runs-on: ubuntu-latest
@@ -175,8 +173,7 @@ jobs:
                   "version": "1.${{ github.run_number }}",
                   "semanticVersion": "1.${{ github.run_number }}.0",
                   "repositoryName": "${{ github.repository }}"
-              }
-          ]'
+              }]'
           # Name of the Package that contains list of artifacts
           package-name: 'app-devops-change-velocity-cicd.war'
           # Display Name of Job
@@ -201,7 +198,7 @@ jobs:
           interval: '100'
           timeout: '3600'
           deployment-gate: '{"environment":"prod","jobId":"deploy","jobName":"Deploy"}'
-         setCloseCode":"true"
+          # setCloseCode":"true"
          
   deploy:
     name: Deploy
