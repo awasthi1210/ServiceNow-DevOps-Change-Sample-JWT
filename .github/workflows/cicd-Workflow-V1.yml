@@ -51,7 +51,7 @@ jobs:
           jf rt bp
   build:
     name: 'Build'
-    # needs: JFrog
+    needs: JFrog
     runs-on: ubuntu-latest
 
     steps:
@@ -99,7 +99,7 @@ jobs:
 
   registerArtifact:
     name: 'Register Artifact'
-    needs: Build
+    needs: test
     runs-on: ubuntu-latest
     steps:
     - name: ServiceNow DevOps Register Artifact
@@ -185,7 +185,7 @@ jobs:
 
   registerPackage:
     name: 'Register Package'
-    needs: [registerArtifact]
+    needs: [ServiceNowSecurityScanResults]
     runs-on: ubuntu-latest
     steps:
     - name: ServiceNow DevOps Register Package
@@ -247,7 +247,7 @@ jobs:
 
   getchange:
     # jobs that  must complete successfully before this job will run
-    needs: change
+    needs: deploy
     # type of machine to run the job on
     runs-on: ubuntu-latest
     if: always()
