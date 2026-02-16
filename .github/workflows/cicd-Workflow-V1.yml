@@ -49,7 +49,7 @@ jobs:
           jf rt bp
   build:
     name: 'Build'
-    # needs: JFrog
+    needs: JFrog
     runs-on: ubuntu-latest
 
     steps:
