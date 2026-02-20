@@ -293,7 +293,7 @@ jobs:
           interval: '100'
           timeout: '3600'
           deployment-gate: '{"environment":"prod","jobId":"deploy","jobName":"Deploy"}'
-          setCloseCode":"true"
+          # setCloseCode":"true"
          
   deploy:
     name: Deploy
