@@ -35,8 +35,7 @@ jobs:
       - name: ServiceNow DevOps Unit Test Results
         uses: ServiceNow/servicenow-devops-test-report@scratch/STRY63281042
         with:
-          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
-          devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+          devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
           instance-url: ${{ secrets.SN_INSTANCE_URL }}
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           job-name: Test
@@ -51,8 +50,7 @@ jobs:
       - name: ServiceNow DevOps Register Artifact
         uses: ServiceNow/servicenow-devops-register-artifact@scratch/STRY63281042
         with:
-          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
-          devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+          devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
           instance-url: ${{ secrets.SN_INSTANCE_URL }}
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           job-name: Register Artifact
@@ -79,8 +77,7 @@ jobs:
         uses: ServiceNow/servicenow-devops-sonar@scratch/STRY63281042
         with:
           instance-url: ${{ secrets.SN_INSTANCE_URL }}
-          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
-          devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+          devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           context-github: ${{ toJSON(github) }}
           job-name: Sonar Scan
@@ -95,8 +92,7 @@ jobs:
       - name: ServiceNow DevOps Security Results
         uses: ServiceNow/servicenow-devops-security-result@scratch/STRY63281042
         with:
-          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
-          devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+          devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
           instance-url: ${{ secrets.SN_INSTANCE_URL }}
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           context-github: ${{ toJSON(github) }}
@@ -112,8 +108,7 @@ jobs:
       - name: ServiceNow DevOps Register Package
         uses: ServiceNow/servicenow-devops-register-package@scratch/STRY63281042
         with:
-          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
-          devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+          devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
           instance-url: ${{ secrets.SN_INSTANCE_URL }}
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           context-github: ${{ toJSON(github) }}
@@ -138,8 +133,7 @@ jobs:
       - name: ServiceNow DevOps Change Attributes
         uses: ServiceNow/servicenow-devops-change@scratch/STRY63281042
         with:
-          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
-          devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+          devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
           instance-url: ${{ secrets.SN_INSTANCE_URL }}
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           context-github: ${{ toJSON(github) }}
@@ -173,8 +167,7 @@ jobs:
         uses: ServiceNow/servicenow-devops-get-change@scratch/STRY63281042
         with:
           instance-url: ${{ secrets.SN_INSTANCE_URL }}
-          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
-          devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+          devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           context-github: ${{ toJSON(github) }}
           change-details: >
@@ -193,8 +186,7 @@ jobs:
         uses: ServiceNow/servicenow-devops-update-change@scratch/STRY63281042
         with:
           instance-url: ${{ secrets.SN_INSTANCE_URL }}
-          devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
-          devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
+          devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
           tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
           context-github: ${{ toJSON(github) }}
           change-request-number: ${{ needs.getchange.outputs.change-request-number }}
