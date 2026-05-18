@@ -13,43 +13,43 @@ on:
 #   schedule:
 #     - cron: '*/2 * * * *'
 jobs:
-  jFrog:
-   runs-on: ubuntu-latest
+  # jFrog:
+  #  runs-on: ubuntu-latest
 
-   steps:
-   # This action checks out the code from the repository
-   - name: Checkout Code 
-     uses: actions/checkout@v2
-
-
-   # This action sets up the JFrog CLI with the Artifactory URL and access token     
-   - uses: jfrog/setup-jfrog-cli@v3
-     env:
-       JF_URL: "https://trial6m3q35.jfrog.io/"
-       JF_ACCESS_TOKEN: "eyJ2ZXIiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYiLCJraWQiOiJaNUtpQ1M1RXNlSHFvUmJZdzhEbmIwV2haTjJIRC1lcEd6Y2JZb1VKdGE4In0.eyJzdWIiOiJqZmFjQDAxa2g4ZnBiM2I4ajd5MDl0cGpjMmQwM2pzL3VzZXJzL2F3YXN0aGkiLCJzY3AiOiJhcHBsaWVkLXBlcm1pc3Npb25zL2FkbWluIiwiYXVkIjoiKkAqIiwiaXNzIjoiamZmZUAwMWtoOGZwYjNiOGo3eTA5dHBqYzJkMDNqcyIsImlhdCI6MTc3MTU3OTYwOSwianRpIjoiMjcxMTM0NGItZDgzOC00MWYyLTlhYmUtNWE0OTk4OGU1ZGZmIiwidGlkIjoiYTBrY3Fpcm56am43cyJ9.GEzDn7UIeu_eZKPO4Jd-u6vnizR92XUcn9o0OA-10e2Lo3avZFw4r6qNhqs6lrLvS7rxt1BqWLHuGaBjQJsdawSvCIXewt0zfv_KPbgm-06sN6WxQXOnf6sWZcS5ktXmI9pkLrx9Mm__EQv3I1Opc6eAI1TIu1F6GMZF4kFvYEc0WYAK4vt46RfrzPQCoLytcmxvi8SHbk18xn3PCDI8vjkdlMf_cbeWh6nPhX-bKIWQRnyn66STEhetUHJKMtiFfxJZ9DvxpE6QxVb-07iksRSUkOrXRYXIgEoKyMpmdnz7vtCQzCkZlIquXYaQ_VeDuLPOkPdgU5HKNJ7ESss_BA"
+  #  steps:
+  #  # This action checks out the code from the repository
+  #  - name: Checkout Code 
+  #    uses: actions/checkout@v2
 
 
-   # This command adds a new server configuration to the JFrog CLI   
-   - run: |
-       export SERVER_ID="venkata7"
-       jf c add $SERVER_ID --url="eyJ2ZXIiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYiLCJraWQiOiJaNUtpQ1M1RXNlSHFvUmJZdzhEbmIwV2haTjJIRC1lcEd6Y2JZb1VKdGE4In0.eyJzdWIiOiJqZmFjQDAxa2g4ZnBiM2I4ajd5MDl0cGpjMmQwM2pzL3VzZXJzL2F3YXN0aGkiLCJzY3AiOiJhcHBsaWVkLXBlcm1pc3Npb25zL2FkbWluIiwiYXVkIjoiKkAqIiwiaXNzIjoiamZmZUAwMWtoOGZwYjNiOGo3eTA5dHBqYzJkMDNqcyIsImlhdCI6MTc3MTU3OTYwOSwianRpIjoiMjcxMTM0NGItZDgzOC00MWYyLTlhYmUtNWE0OTk4OGU1ZGZmIiwidGlkIjoiYTBrY3Fpcm56am43cyJ9.GEzDn7UIeu_eZKPO4Jd-u6vnizR92XUcn9o0OA-10e2Lo3avZFw4r6qNhqs6lrLvS7rxt1BqWLHuGaBjQJsdawSvCIXewt0zfv_KPbgm-06sN6WxQXOnf6sWZcS5ktXmI9pkLrx9Mm__EQv3I1Opc6eAI1TIu1F6GMZF4kFvYEc0WYAK4vt46RfrzPQCoLytcmxvi8SHbk18xn3PCDI8vjkdlMf_cbeWh6nPhX-bKIWQRnyn66STEhetUHJKMtiFfxJZ9DvxpE6QxVb-07iksRSUkOrXRYXIgEoKyMpmdnz7vtCQzCkZlIquXYaQ_VeDuLPOkPdgU5HKNJ7ESss_BA" --interactive=false
-  # Upload the JFrog Artifact, in the below we are upload README.md artifact.
-   - name: Run JFrog CLI Ping
-     run: |
-          export JFROG_CLI_HOME="/home/runner/work/jenkins-test/jenkins-test"
-          jf rt u "README.md" "tf-trial/workspaces/jfrog-ws1/"
-          # Collect environment variables for the build
-          jf rt bce
-          # Publish build info
-          jf rt bp
-   # Download the JFrog Artifact, in the below we are Downloading README.md artifact.
-   - name: Download Artifact
-     run: |
-          jf rt dl tf-trial/workspaces/jfrog-ws1/README.md ./ 
-          jf rt bp
+  #  # This action sets up the JFrog CLI with the Artifactory URL and access token     
+  #  - uses: jfrog/setup-jfrog-cli@v3
+  #    env:
+  #      JF_URL: "https://trial6m3q35.jfrog.io/"
+  #      JF_ACCESS_TOKEN: "eyJ2ZXIiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYiLCJraWQiOiJaNUtpQ1M1RXNlSHFvUmJZdzhEbmIwV2haTjJIRC1lcEd6Y2JZb1VKdGE4In0.eyJzdWIiOiJqZmFjQDAxa2g4ZnBiM2I4ajd5MDl0cGpjMmQwM2pzL3VzZXJzL2F3YXN0aGkiLCJzY3AiOiJhcHBsaWVkLXBlcm1pc3Npb25zL2FkbWluIiwiYXVkIjoiKkAqIiwiaXNzIjoiamZmZUAwMWtoOGZwYjNiOGo3eTA5dHBqYzJkMDNqcyIsImlhdCI6MTc3MTU3OTYwOSwianRpIjoiMjcxMTM0NGItZDgzOC00MWYyLTlhYmUtNWE0OTk4OGU1ZGZmIiwidGlkIjoiYTBrY3Fpcm56am43cyJ9.GEzDn7UIeu_eZKPO4Jd-u6vnizR92XUcn9o0OA-10e2Lo3avZFw4r6qNhqs6lrLvS7rxt1BqWLHuGaBjQJsdawSvCIXewt0zfv_KPbgm-06sN6WxQXOnf6sWZcS5ktXmI9pkLrx9Mm__EQv3I1Opc6eAI1TIu1F6GMZF4kFvYEc0WYAK4vt46RfrzPQCoLytcmxvi8SHbk18xn3PCDI8vjkdlMf_cbeWh6nPhX-bKIWQRnyn66STEhetUHJKMtiFfxJZ9DvxpE6QxVb-07iksRSUkOrXRYXIgEoKyMpmdnz7vtCQzCkZlIquXYaQ_VeDuLPOkPdgU5HKNJ7ESss_BA"
+
+
+  #  # This command adds a new server configuration to the JFrog CLI   
+  #  - run: |
+  #      export SERVER_ID="venkata7"
+  #      jf c add $SERVER_ID --url="eyJ2ZXIiOiIyIiwidHlwIjoiSldUIiwiYWxnIjoiUlMyNTYiLCJraWQiOiJaNUtpQ1M1RXNlSHFvUmJZdzhEbmIwV2haTjJIRC1lcEd6Y2JZb1VKdGE4In0.eyJzdWIiOiJqZmFjQDAxa2g4ZnBiM2I4ajd5MDl0cGpjMmQwM2pzL3VzZXJzL2F3YXN0aGkiLCJzY3AiOiJhcHBsaWVkLXBlcm1pc3Npb25zL2FkbWluIiwiYXVkIjoiKkAqIiwiaXNzIjoiamZmZUAwMWtoOGZwYjNiOGo3eTA5dHBqYzJkMDNqcyIsImlhdCI6MTc3MTU3OTYwOSwianRpIjoiMjcxMTM0NGItZDgzOC00MWYyLTlhYmUtNWE0OTk4OGU1ZGZmIiwidGlkIjoiYTBrY3Fpcm56am43cyJ9.GEzDn7UIeu_eZKPO4Jd-u6vnizR92XUcn9o0OA-10e2Lo3avZFw4r6qNhqs6lrLvS7rxt1BqWLHuGaBjQJsdawSvCIXewt0zfv_KPbgm-06sN6WxQXOnf6sWZcS5ktXmI9pkLrx9Mm__EQv3I1Opc6eAI1TIu1F6GMZF4kFvYEc0WYAK4vt46RfrzPQCoLytcmxvi8SHbk18xn3PCDI8vjkdlMf_cbeWh6nPhX-bKIWQRnyn66STEhetUHJKMtiFfxJZ9DvxpE6QxVb-07iksRSUkOrXRYXIgEoKyMpmdnz7vtCQzCkZlIquXYaQ_VeDuLPOkPdgU5HKNJ7ESss_BA" --interactive=false
+  # # Upload the JFrog Artifact, in the below we are upload README.md artifact.
+  #  - name: Run JFrog CLI Ping
+  #    run: |
+  #         export JFROG_CLI_HOME="/home/runner/work/jenkins-test/jenkins-test"
+  #         jf rt u "README.md" "tf-trial/workspaces/jfrog-ws1/"
+  #         # Collect environment variables for the build
+  #         jf rt bce
+  #         # Publish build info
+  #         jf rt bp
+  #  # Download the JFrog Artifact, in the below we are Downloading README.md artifact.
+  #  - name: Download Artifact
+  #    run: |
+  #         jf rt dl tf-trial/workspaces/jfrog-ws1/README.md ./ 
+  #         jf rt bp
   build:
     name: 'Build'
-    needs: JFrog
+    # needs: JFrog
     runs-on: ubuntu-latest
 
     steps:
@@ -317,7 +317,7 @@ jobs:
       - name: ServiceNow DevOps Get Change
         # You may pin to the exact commit or the version.
         # uses: ServiceNow/servicenow-devops-get-change@0f8b1914adeaec764a4286bdd9cba73ed1c6097f
-        uses: ServiceNow/servicenow-devops-get-change@v5.1.0
+        uses: ServiceNow/servicenow-devops-get-change@dev
         id: get_change
         with:
           # ServiceNow Instance URL
