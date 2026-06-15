@@ -43,7 +43,7 @@ jobs:
 
     - name: ServiceNow DevOps Unit Test Results
     # You may pin to the exact commit or the version.
-      uses: ServiceNow/servicenow-devops-test-report@scratch/STRY64095305-testing
+      uses: ServiceNow/servicenow-devops-test-report@v7.0.0
       with:
           # Devops Integration Token
           # devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
@@ -69,7 +69,7 @@ jobs:
     steps:
     - name: ServiceNow DevOps Register Artifact
     # You may pin to the exact commit or the version.          
-      uses: ServiceNow/servicenow-devops-register-artifact@scratch/STRY64095305-testing
+      uses: ServiceNow/servicenow-devops-register-artifact@v7.0.0
       with:
           devops-integration-user-name: '${{ secrets.SN_DEVOPS_USER }}'
           devops-integration-user-password: '${{ secrets.SN_DEVOPS_PASSWORD }}'
@@ -100,26 +100,26 @@ jobs:
   #  - name: Checkout
   #    uses: actions/checkout@v4.0.0
   
-   # - name: ServiceNow DevOps Sonar Scan Results
-   # # You may pin to the exact commit or the version.     
-   #   uses: ServiceNow/servicenow-devops-sonar@dev
-   #   with:
-   #       # ServiceNow Instance URL
-   #       instance-url: ${{ secrets.SN_INSTANCE_URL }}
-   #       # Devops Integration Token
-   #       devops-integration-user-name: '${{ secrets.SN_DEVOPS_USER }}'
-   #       devops-integration-user-password: '${{ secrets.SN_DEVOPS_PASSWORD }}'
-   #       # devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
-   #       # Orchestration Tool Id
-   #       tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
-   #       # Github Context
-   #       context-github: ${{ toJSON(github) }}
-   #       # Display Name of the Job
-   #       job-name: 'Sonar Scan'
-   #       # Sonar Host URL
-   #       sonar-host-url: ${{ secrets.SONAR_URL }}
-   #       # Sonar Project Key
-   #       sonar-project-key: ${{ secrets.SONAR_PROJECT_KEY }}
+  #  - name: ServiceNow DevOps Sonar Scan Results
+  #  # You may pin to the exact commit or the version.     
+  #    uses: ServiceNow/servicenow-devops-sonar@dev
+  #    with:
+  #        # ServiceNow Instance URL
+  #        instance-url: ${{ secrets.SN_INSTANCE_URL }}
+  #        # Devops Integration Token
+  #        devops-integration-user-name: '${{ secrets.SN_DEVOPS_USER }}'
+  #        devops-integration-user-password: '${{ secrets.SN_DEVOPS_PASSWORD }}'
+  #        # devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
+  #        # Orchestration Tool Id
+  #        tool-id: ${{ secrets.SN_ORCHESTRATION_TOOL_ID }}
+  #        # Github Context
+  #        context-github: ${{ toJSON(github) }}
+  #        # Display Name of the Job
+  #        job-name: 'Sonar Scan'
+  #        # Sonar Host URL
+  #        sonar-host-url: ${{ secrets.SONAR_URL }}
+  #        # Sonar Project Key
+  #        sonar-project-key: ${{ secrets.SONAR_PROJECT_KEY }}
 
   # ServiceNowSecurityScanResults:
   #   # type of machine to run the job on
@@ -216,7 +216,7 @@ jobs:
     steps:
     - name: ServiceNow DevOps Register Package
     # You may pin to the exact commit or the version.           
-      uses: ServiceNow/servicenow-devops-register-package@scratch/STRY64095305-testing
+      uses: ServiceNow/servicenow-devops-register-package@v7.0.0
       with:
           # Devops Integration Token
           devops-integration-user-name: '${{ secrets.SN_DEVOPS_USER }}'
@@ -247,7 +247,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:     
       - name: ServiceNow DevOps Change Attributes
-        uses: ServiceNow/servicenow-devops-change@scratch/STRY64095305-testing
+        uses: ServiceNow/servicenow-devops-change@v7.0.0
         with:
           devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
           devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
@@ -284,7 +284,7 @@ jobs:
       - name: ServiceNow DevOps Get Change
         # You may pin to the exact commit or the version.
         # uses: ServiceNow/servicenow-devops-get-change@0f8b1914adeaec764a4286bdd9cba73ed1c6097f
-        uses: ServiceNow/servicenow-devops-get-change@scratch/STRY64095305-testing
+        uses: ServiceNow/servicenow-devops-get-change@v7.0.0
         id: get_change
         with:
           # ServiceNow Instance URL
@@ -313,7 +313,7 @@ jobs:
       - name: ServiceNow DevOps Update Change
         # You may pin to the exact commit or the version.
         # uses: ServiceNow/servicenow-devops-update-change@66d51cb13684d8287a763bc3f4dc4531c6ab3306
-        uses: ServiceNow/servicenow-devops-update-change@scratch/STRY64095305-testing
+        uses: ServiceNow/servicenow-devops-update-change@v7.0.0
         id: update_change
         with:
           # ServiceNow Instance URL
