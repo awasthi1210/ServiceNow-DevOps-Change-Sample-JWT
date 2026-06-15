@@ -43,7 +43,7 @@ jobs:
 
     - name: ServiceNow DevOps Unit Test Results
     # You may pin to the exact commit or the version.
-      uses: ServiceNow/servicenow-devops-test-report@dev
+      uses: ServiceNow/servicenow-devops-test-report@scratch/STRY64095305-testing
       with:
           # Devops Integration Token
           # devops-integration-token: ${{ secrets.SN_DEVOPS_TOKEN }}
@@ -69,7 +69,7 @@ jobs:
     steps:
     - name: ServiceNow DevOps Register Artifact
     # You may pin to the exact commit or the version.          
-      uses: ServiceNow/servicenow-devops-register-artifact@dev
+      uses: ServiceNow/servicenow-devops-register-artifact@scratch/STRY64095305-testing
       with:
           devops-integration-user-name: '${{ secrets.SN_DEVOPS_USER }}'
           devops-integration-user-password: '${{ secrets.SN_DEVOPS_PASSWORD }}'
@@ -216,7 +216,7 @@ jobs:
     steps:
     - name: ServiceNow DevOps Register Package
     # You may pin to the exact commit or the version.           
-      uses: ServiceNow/servicenow-devops-register-package@dev
+      uses: ServiceNow/servicenow-devops-register-package@scratch/STRY64095305-testing
       with:
           # Devops Integration Token
           devops-integration-user-name: '${{ secrets.SN_DEVOPS_USER }}'
@@ -247,7 +247,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:     
       - name: ServiceNow DevOps Change Attributes
-        uses: ServiceNow/servicenow-devops-change@dev
+        uses: ServiceNow/servicenow-devops-change@scratch/STRY64095305-testing
         with:
           devops-integration-user-name: ${{ secrets.SN_DEVOPS_USER }}
           devops-integration-user-password: ${{ secrets.SN_DEVOPS_PASSWORD }}
@@ -284,7 +284,7 @@ jobs:
       - name: ServiceNow DevOps Get Change
         # You may pin to the exact commit or the version.
         # uses: ServiceNow/servicenow-devops-get-change@0f8b1914adeaec764a4286bdd9cba73ed1c6097f
-        uses: ServiceNow/servicenow-devops-get-change@dev
+        uses: ServiceNow/servicenow-devops-get-change@scratch/STRY64095305-testing
         id: get_change
         with:
           # ServiceNow Instance URL
@@ -313,7 +313,7 @@ jobs:
       - name: ServiceNow DevOps Update Change
         # You may pin to the exact commit or the version.
         # uses: ServiceNow/servicenow-devops-update-change@66d51cb13684d8287a763bc3f4dc4531c6ab3306
-        uses: ServiceNow/servicenow-devops-update-change@dev
+        uses: ServiceNow/servicenow-devops-update-change@scratch/STRY64095305-testing
         id: update_change
         with:
           # ServiceNow Instance URL
