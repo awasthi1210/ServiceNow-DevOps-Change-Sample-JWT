@@ -60,7 +60,9 @@ jobs:
           # Github Context
           context-github: ${{ toJSON(github) }}
           # JUnit xml report file name with path
-          xml-report-filename: target/ # if only JUnit tests, use target/surefire-reports/testng-results.xml
+          xml-report-filename: target/ 
+          run: sleep 20
+          # if only JUnit tests, use target/surefire-reports/testng-results.xml
           # if both JUnit & TestNG tests, use target/surefire-reports/testng-junit-results/testng-results.xml
 
   registerArtifact:
@@ -84,6 +86,7 @@ jobs:
           job-name: 'Register Artifact'
           # Github Context
           context-github: ${{ toJSON(github) }}
+          run: sleep 20
           # List of Artifacts to be registered
           artifacts: '[
              {
@@ -92,6 +95,7 @@ jobs:
                   "semanticVersion": "1.${{ github.run_number }}.0",
                   "repositoryName": "${{ github.repository }}"
               }]'
+              
 
   # sonarScan:
   #  name: 'Sonar Scan'
@@ -241,6 +245,7 @@ jobs:
           package-name: 'app-devops-change-velocity-cicd.war'
           # Display Name of Job
           job-name: 'Register Package'
+          run: sleep 20
 
   change:
     name: Change Request
@@ -260,6 +265,7 @@ jobs:
           change-request: '{"autoCloseChange":true,"attributes":{"chg_model": {"name": "Normal" },"short_description":"Automated Software Deployments","description":"Automated Software Deployment.","assignment_group":"a715cd759f2002002920bde8132e7018","implementation_plan":"Software update is tested and results can be found in Test Summaries Tab.","backout_plan":"When software fails in production, the previous software release will be re-deployed.","test_plan":"Testing if the software was successfully deployed."}}'  
           interval: '100'
           timeout: '3600'
+          run: sleep 20
           # deployment-gate: '{"environment":"prod","jobId":"deploy","jobName":"Deploy"}'
           # setCloseCode":"true"
          
