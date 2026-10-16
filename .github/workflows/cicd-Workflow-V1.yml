@@ -269,14 +269,14 @@ jobs:
           # deployment-gate: '{"environment":"prod","jobId":"deploy","jobName":"Deploy"}'
           # setCloseCode":"true"
          
-  deploy:
-    name: Deploy
-    needs: change
-    runs-on: ubuntu-latest
-    environment: prod
-    steps:
-      - name: Run deployment scripts
-        run: echo Completed Deployment. 
+  # deploy:
+  #   name: Deploy
+  #   needs: change
+  #   runs-on: ubuntu-latest
+  #   environment: prod
+  #   steps:
+  #     - name: Run deployment scripts
+  #       run: echo Completed Deployment. 
 
   getchange:
     # jobs that  must complete successfully before this job will run
