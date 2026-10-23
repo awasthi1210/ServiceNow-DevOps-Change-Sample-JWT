@@ -266,7 +266,7 @@ jobs:
           interval: '100'
           timeout: '3600'
           run: sleep 20
-          # deployment-gate: '{"environment":"prod","jobId":"deploy","jobName":"Deploy"}'
+          deployment-gate: '{"environment":"prod","jobId":"deploy","jobName":"Deploy"}'
           # setCloseCode":"true"
          
   deploy:
