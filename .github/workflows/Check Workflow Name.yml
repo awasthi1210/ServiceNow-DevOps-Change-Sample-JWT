@@ -1,0 +1,31 @@
+name: Check Workflow Name
+run-name: "Custom run name - ${{ github.actor }} - ${{ github.sha }}"
+
+on:
+  workflow_dispatch:
+
+permissions:
+  actions: read
+  contents: read
+
+jobs:
+  inspect:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Show names from context
+        run: |
+          echo "github.workflow     = ${{ github.workflow }}"
+          echo "github.run_id       = ${{ github.run_id }}"
+          echo "github.run_attempt  = ${{ github.run_attempt }}"
+
+      - name: Show workflow_name returned by the Jobs API
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          echo "--- Jobs API (this is what ServiceNow uses) ---"
+          gh api repos/${{ github.repository }}/actions/runs/${{ github.run_id }}/jobs \
+            --jq '.jobs[] | {job: .name, workflow_name: .workflow_name, run_url: .html_url}'
+
+          echo "--- Run API ---"
+          gh api repos/${{ github.repository }}/actions/runs/${{ github.run_id }} \
+            --jq '{name: .name, display_title: .display_title, workflow_id: .workflow_id, path: .path}'
