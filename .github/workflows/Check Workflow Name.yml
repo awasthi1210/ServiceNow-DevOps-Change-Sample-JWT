@@ -8,7 +8,7 @@ permissions:
   actions: read
   contents: read
 
-jobs:
+jobs: 
   inspect:
     runs-on: ubuntu-latest
     steps:
