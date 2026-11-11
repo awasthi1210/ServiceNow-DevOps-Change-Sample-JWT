@@ -6,7 +6,7 @@ def repoName = "pramaraju96/ServiceNow-DevOps-Change-Sample" //Ensure after fork
 def changeRequestNumber = null
 def package1 = false
 def package2 = false
-
+ 
 pipeline {
 	agent any
 	
